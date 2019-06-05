@@ -1,5 +1,5 @@
 # キューの実装
-class Queue():
+class Queue:
     def __init__(self):
         self.queue_list = []
 
@@ -40,4 +40,14 @@ class Graph:
         else:
             return links.get(node2)
 
-    
+    def nodes(self):
+        s1 = set([k for k in self.graph_dict.keys()])
+        s2 = set([k2 for v in self.graph_dict.values() for k2, v2 in v.items()])
+        nodes = s1.union(s2)
+        return list(nodes)
+
+    def depth_first_search(self, start, end):
+        stack = []
+        # 1が訪問済みの印
+        visited = {}
+        visited.setdefault(start, 1)
